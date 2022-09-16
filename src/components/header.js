@@ -9,7 +9,7 @@ const Header = () => (
         <Link to="/" className="nav-books"> Books</Link>
       </li>
       <li>
-        <Link to="/category" className="nav-category">Category</Link>
+        <Link to="/catagory" className="nav-category">Category</Link>
       </li>
     </ul>
   </nav>

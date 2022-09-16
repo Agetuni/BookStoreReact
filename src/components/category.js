@@ -1,9 +1,9 @@
-const Category = () => (
-  <>
-    <div className="category">
-      <h1> Category</h1>
-    </div>
-  </>
-);
+import './category.css';
 
+const Category = () => (
+  <div className="">
+    <button type="button" className="check-status">Check Status</button>
+
+  </div>
+);
 export default Category;
