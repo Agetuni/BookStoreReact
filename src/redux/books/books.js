@@ -1,20 +1,17 @@
-import createBook from "../../services/bookService";
-const ADD = "ADD";
-const REMOVE = "REMOVE";
+import createBook from '../../services/bookService';
+
+const ADD = 'ADD';
+const REMOVE = 'REMOVE';
 const initialState = {
   books: [],
 };
 
-const add = (state, data) => {
-  books: [...state.books, createBook(data)];
-};
-const remove =(bookId) => {
-    books= books.filter(x=>x.id!== bookId);
-}
+const add = (state, data) => [...state.books, createBook(data)];
+const remove = (state, bookId) => state.books.filter((x) => x.id !== bookId);
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case ADD:
-      return add(state,actin.data);
+      return add(state, action.data);
     case REMOVE:
       return remove(state);
     default:

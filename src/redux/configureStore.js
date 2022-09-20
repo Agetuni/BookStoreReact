@@ -1,19 +1,14 @@
-const ADD = "ADD";
-const REMOVE = "REMOVE";
-const initialState = {
-  books: [],
+import { configureStore } from '@reduxjs/toolkit';
+import bookReducer from './books/books';
+import categoryReducer from './categories/categories';
+
+const reducers = {
+  books: bookReducer,
+  categories: categoryReducer,
 };
 
-const reducer = (state=initialState, action={}) =>{
-    switch(action.type){
-        case ADD: return '';
-        case REMOVE : return '';
-        default : return state;
-    }
-}
+const store = configureStore({
+  reducers,
+});
 
-const addBoook = (data) => ({type:ADD,data});
-const removeBook =(bookId)=>({type:REMOVE,bookId});
-
-export {addBoook,removeBook};
-export default reducer;
+export default store;
