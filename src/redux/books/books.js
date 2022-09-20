@@ -1,7 +1,7 @@
 import createBook from '../../services/bookService';
 
-const ADD = 'ADD';
-const REMOVE = 'REMOVE';
+const ADD = 'bookstore/books/ADD_BOOK';
+const REMOVE = 'bookstore/books/REMOVE_BOOK';
 const initialState = {
   books: [],
 };

@@ -1,16 +1,16 @@
 const initalState = { categories: [] };
 
 // actions
-const CHECKSTATUS = 'CHECKSTATUS ';
+const CHECK_STATUS = 'bookstore/categories/CHECK_STATUS';
 const statusAction = () => 'Under construction';
 const reducer = (state = initalState, action = {}) => {
   switch (action.type) {
-    case CHECKSTATUS: return statusAction();
+    case CHECK_STATUS: return statusAction();
     default: return state;
   }
 };
 
-const checkStatus = () => ({ type: CHECKSTATUS });
+const checkStatus = () => ({ type: CHECK_STATUS });
 
 export default reducer;
 export { checkStatus };
