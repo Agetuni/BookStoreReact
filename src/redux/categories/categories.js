@@ -1,5 +1,4 @@
-const initalState = { categories: [] };
-
+const initalState = '';
 // actions
 const CHECK_STATUS = 'bookstore/categories/CHECK_STATUS';
 const statusAction = () => 'Under construction';

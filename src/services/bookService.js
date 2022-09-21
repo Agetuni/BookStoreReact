@@ -1,12 +1,11 @@
+import { v4 as uuid } from 'uuid';
+
 const createBook = (data) => {
-  const { title, author, genre } = data;
+  const { title, author } = data;
   return {
-    id: title,
+    id: uuid(),
     title,
-    genres: genre,
-    authors: author,
-    completed: 0,
-    currentChapter: 'Hello',
+    author,
   };
 };
 export default createBook;
