@@ -1,18 +1,20 @@
 import './addbook.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBoook } from '../redux/books/books';
+import { v4 as uuid } from 'uuid';
+import { addBookApi } from '../redux/books/books';
 
 const AddBook = () => {
   const [book, setBook] = useState({
     title: '',
     author: '',
-    id: 0,
+    category: 'Fiction',
+    item_id: 0,
   });
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addBoook(book));
+    dispatch(addBookApi(book));
     e.target.reset();
   };
   const handleTitleChange = (e) => {
@@ -20,6 +22,7 @@ const AddBook = () => {
     const { value } = e.target;
     setBook((e) => ({
       ...e,
+      item_id: uuid(),
       title: value,
     }));
   };
@@ -28,13 +31,14 @@ const AddBook = () => {
     const { value } = e.target;
     setBook((e) => ({
       ...e,
+      item_id: uuid(),
       author: value,
     }));
   };
   return (
-    <div className="addbook-form" onSubmit={handleSubmit}>
+    <div className="addbook-form">
       <span> Add New Book</span>
-      <form className="form-inputs">
+      <form className="form-inputs" onSubmit={handleSubmit}>
         <input
           placeholder="BookTitile"
           className="input-title"
