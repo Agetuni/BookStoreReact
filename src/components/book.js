@@ -1,7 +1,7 @@
 import './book.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBookApi } from '../redux/books/apiService';
+import { removeBookApi } from '../redux/books/books';
 
 const Book = (props) => {
   const dispatch = useDispatch();

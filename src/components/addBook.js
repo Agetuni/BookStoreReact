@@ -2,17 +2,19 @@ import './addbook.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { v4 as uuid } from 'uuid';
-import { addBookApi } from '../redux/books/apiService';
+import { addBookApi } from '../redux/books/books';
 
 const AddBook = () => {
   const [book, setBook] = useState({
     title: '',
     author: '',
-    id: 0,
+    category: 'Fiction',
+    item_id: 0,
   });
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(book);
     dispatch(addBookApi(book));
     e.target.reset();
   };
@@ -21,7 +23,7 @@ const AddBook = () => {
     const { value } = e.target;
     setBook((e) => ({
       ...e,
-      id: uuid(),
+      item_id: uuid(),
       title: value,
     }));
   };
@@ -30,7 +32,7 @@ const AddBook = () => {
     const { value } = e.target;
     setBook((e) => ({
       ...e,
-      id: uuid(),
+      item_id: uuid(),
       author: value,
     }));
   };

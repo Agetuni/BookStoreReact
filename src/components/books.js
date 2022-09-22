@@ -3,27 +3,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Book from './book';
 import AddBook from './addBook';
-import { getBookApi } from '../redux/books/apiService';
+import { getBookApi } from '../redux/books/books';
+import status from '../redux/status';
 
 const Books = () => {
   const dispatch = useDispatch();
+  const bookList = useSelector((state) => state.books.books);
+  const load = useSelector((state) => state.books.loading);
   useEffect(() => {
-    dispatch(getBookApi());
+    if (load === status.idle) dispatch(getBookApi());
   }, [dispatch]);
-  const bookList = useSelector((state) => state.books);
+
+  console.log(bookList);
   return (
     <div className="books">
-      {Object.keys(bookList).map((book) => {
-        const currentbook = bookList[book][0];
-        return (
+      {
+        bookList.map((book) => (
           <Book
-            key={book}
-            title={currentbook.title}
-            author={currentbook.author}
-            id={book}
+            key={book.item_id}
+            title={book.title}
+            author={book.author}
+            id={book.item_id}
           />
-        );
-      })}
+        ))
+      }
       <AddBook />
     </div>
   );
