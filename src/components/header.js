@@ -1,9 +1,10 @@
 import './header.css';
 import { Link } from 'react-router-dom';
+import avator from '../images/avator.jpg';
 
 const Header = () => (
-  <div className="header">
-    <nav className="panel-bg">
+  <div className="header panel-bg">
+    <nav className="test">
       <span className="nav-logo">Bookstore CMS</span>
       <ul>
         <li>
@@ -18,10 +19,13 @@ const Header = () => (
           </Link>
         </li>
       </ul>
+      <div className="ovalheader">
+        <p>
+          <img className="avator" src={avator} alt="texttttttttttttttttttttttttttt" />
+        </p>
+      </div>
     </nav>
-    <div>
-      <div className="ovalheader" />
-    </div>
+
   </div>
 );
 export default Header;
