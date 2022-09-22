@@ -13,8 +13,6 @@ const Books = () => {
   useEffect(() => {
     if (load === status.idle) dispatch(getBookApi());
   }, [dispatch]);
-
-  console.log(bookList);
   return (
     <div className="books">
       {

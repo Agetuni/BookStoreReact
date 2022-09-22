@@ -14,7 +14,6 @@ const AddBook = () => {
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(book);
     dispatch(addBookApi(book));
     e.target.reset();
   };

@@ -1,5 +1,5 @@
-/* eslint-disable camelcase */
 /* eslint-disable no-param-reassign */
+/* eslint-disable camelcase */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { keys } from 'lodash';
@@ -9,37 +9,28 @@ const createBook = (data) => ({
   item_id: data.id,
   ...data,
 });
-
-// actions CONSTANTS
-const ACTION_PREPEND = 'bookstore/books';
-const BASEURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
-const APPID = 'wIcNq0sQOGNWQAAoJURH';
-const ENDPOINTBOOKS = `${BASEURL}/apps/${APPID}/books`;
-
-// ASYNC REDUCERS
-
+const domain = 'bookstore/books';
+const baseURL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+const systemId = 'wIcNq0sQOGNWQAAoJURH';
+const endPoint = `${baseURL}/apps/${systemId}/books`;
 const config = {
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
   },
 };
-
-// getBookApi
 const getBookApi = createAsyncThunk(
-  `${ACTION_PREPEND}/getBookApi`,
+  `${domain}/getBookApi`,
   async () => {
-    const res = await axios.get(ENDPOINTBOOKS, config);
+    const res = await axios.get(endPoint, config);
     return res.data;
   },
 );
 const addBookApi = createAsyncThunk(
-  `${ACTION_PREPEND}/ADDBOOK`,
+  `${domain}/ADDBOOK`,
   async (data, thunkAPI) => {
     const book = createBook(data);
-    console.log('hello');
-    console.log(book);
-    const res = await axios.post(ENDPOINTBOOKS, book, config);
+    const res = await axios.post(endPoint, book, config);
     const resStatus = {
       data: res.data,
       status: res.status,
@@ -49,10 +40,10 @@ const addBookApi = createAsyncThunk(
     return resStatus;
   },
 );
-const endPointBookId = (itemId) => `${ENDPOINTBOOKS}/${itemId}`;
+const endPointBookId = (itemId) => `${endPoint}/${itemId}`;
 
 const removeBookApi = createAsyncThunk(
-  `${ACTION_PREPEND}/DELETEBOOK`,
+  `${domain}/DELETEBOOK`,
   async (itemId, thunkAPI) => {
     const res = await axios.delete(endPointBookId(itemId), config);
 
@@ -67,7 +58,7 @@ const removeBookApi = createAsyncThunk(
 );
 
 const booksSlice = createSlice({
-  name: ACTION_PREPEND,
+  name: domain,
   initialState: {
     loading: status.idle,
     books: [],
