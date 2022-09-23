@@ -43,6 +43,7 @@ ul li {
   line-height: normal;
   letter-spacing: 1.9px;
   color: #121212;
+  text-decoration: none;
 }
 
 .nav-category {
@@ -58,4 +59,22 @@ ul li {
   line-height: normal;
   letter-spacing: 1.9px;
   color: #121212;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  text-decoration: none;
+}
+
+.ovalheader {
+  color: red;
+}
+
+.avator {
+  width: 110px;
 }
